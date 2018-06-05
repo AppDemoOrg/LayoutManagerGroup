@@ -130,7 +130,6 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
         imgPlay.animate().alpha(0f).start();
     }
 
-
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private int[] imgs = {R.mipmap.img_video_1, R.mipmap.img_video_2};
         private int[] videos = {R.raw.video_1, R.raw.video_2};
