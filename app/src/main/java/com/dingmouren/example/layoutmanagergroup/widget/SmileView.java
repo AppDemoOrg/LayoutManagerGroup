@@ -25,7 +25,6 @@ import com.dingmouren.example.layoutmanagergroup.R;
  */
 public class SmileView extends LinearLayout implements Animator.AnimatorListener {
 
-
     //分割线间距
     private int dividerMargin = 20;
     private float count;

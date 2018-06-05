@@ -1,10 +1,9 @@
 package com.dingmouren.example.layoutmanagergroup.activity;
 
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,20 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.dingmouren.example.layoutmanagergroup.R;
 import com.dingmouren.layoutmanagergroup.viewpager.OnViewPagerListener;
 import com.dingmouren.layoutmanagergroup.viewpager.ViewPagerLayoutManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * ViewPagerLayoutManager
+ * @描述： @ViewPagerLayoutManager
+ * @作者： @黄卫旗
+ * @创建时间： @05/06/2018
  */
 public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
+
     private static final String TAG = "ViewPagerActivity";
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
@@ -38,13 +36,11 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_pager_layout_manager);
 
         initView();
-
         initListener();
     }
 
     private void initView() {
         mRecyclerView = findViewById(R.id.recycler);
-
         mLayoutManager = new ViewPagerLayoutManager(this, OrientationHelper.VERTICAL);
         mAdapter = new MyAdapter();
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -105,10 +101,8 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
             }
         });
 
-
         imgPlay.setOnClickListener(new View.OnClickListener() {
             boolean isPlaying = true;
-
             @Override
             public void onClick(View v) {
                 if (videoView.isPlaying()) {
@@ -143,7 +137,6 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
 
         public MyAdapter() {
         }
-
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

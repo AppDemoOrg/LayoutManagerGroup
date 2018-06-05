@@ -11,12 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
         </activity>
-
         <!-- ********************************** 用于演示的Activity ********************************** -->
-
-
         <!-- SkidRightLayoutManager -->
         <activity
             android:name=".activity.SkidRightActivity_1"

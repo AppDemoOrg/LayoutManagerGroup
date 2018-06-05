@@ -21,6 +21,7 @@ import com.dingmouren.example.layoutmanagergroup.fragment.SlideFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by 钉某人
  * github: https://github.com/DingMouRen
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager mFragmentManager;
     private List<Fragment> mFragments = new ArrayList<>();//存储所有的Fragment对象
     private List<String> mManagerNames = new ArrayList<>();//存储与Fragment对应的LayoutManager的名称
-
     private Fragment mCurrentFragment;
 
     @Override
@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         mTvTitle = findViewById(R.id.tv_title);
         mFragmentManager = getSupportFragmentManager();
-
         initFragments();
-
     }
 
     private void initFragments() {
@@ -65,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         mFragmentManager.beginTransaction()
                 .add(R.id.container_layout, mFragments.get(0))
-                .add(R.id.container_layout,mFragments.get(1))
-                .add(R.id.container_layout,mFragments.get(2))
+                .add(R.id.container_layout, mFragments.get(1))
+                .add(R.id.container_layout, mFragments.get(2))
                 .hide(mFragments.get(2))
                 .hide(mFragments.get(1))
                 .show(mFragments.get(0))
@@ -74,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         mCurrentFragment = mFragments.get(0);
         mTvTitle.setText(mManagerNames.get(0));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.item_0:
                 switchFragment(0);
                 break;
