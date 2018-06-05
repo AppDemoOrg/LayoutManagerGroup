@@ -11,11 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!-- ********************************** 用于演示的Activity ********************************** -->
@@ -35,9 +31,14 @@
             android:name=".activity.BannerActivity"
             android:theme="@style/AppTheme.Skid_1" />
         <!-- ViewPagerLayoutManager-->
-        <activity android:name=".activity.ViewPagerLayoutManagerActivity"
-            android:theme="@style/AppTheme.Skid_1"
-            >
+        <activity
+            android:name=".activity.ViewPagerLayoutManagerActivity"
+            android:theme="@style/AppTheme.Skid_1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

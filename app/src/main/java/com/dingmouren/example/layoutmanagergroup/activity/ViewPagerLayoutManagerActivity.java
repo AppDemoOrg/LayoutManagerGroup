@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
     private static final String TAG = "ViewPagerActivity";
-    private RecyclerView  mRecyclerView;
+    private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
     private ViewPagerLayoutManager mLayoutManager;
 
@@ -51,23 +51,23 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    private void initListener(){
+    private void initListener() {
         mLayoutManager.setOnViewPagerListener(new OnViewPagerListener() {
             @Override
-            public void onPageRelease(boolean isNext,int position) {
-                Log.e(TAG,"释放位置:"+position +" 下一页:"+isNext);
+            public void onPageRelease(boolean isNext, int position) {
+                Log.e(TAG, "释放位置:" + position + " 下一页:" + isNext);
                 int index = 0;
-                if (isNext){
+                if (isNext) {
                     index = 0;
-                }else {
+                } else {
                     index = 1;
                 }
                 releaseVideo(index);
             }
 
             @Override
-            public void onPageSelected(int position,boolean isBottom) {
-                Log.e(TAG,"选中位置:"+position+"  是否是滑动到底部:"+isBottom);
+            public void onPageSelected(int position, boolean isBottom) {
+                Log.e(TAG, "选中位置:" + position + "  是否是滑动到底部:" + isBottom);
                 playVideo(0);
             }
 
@@ -91,7 +91,7 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
             @Override
             public boolean onInfo(MediaPlayer mp, int what, int extra) {
                 mediaPlayer[0] = mp;
-                Log.e(TAG,"onInfo");
+                Log.e(TAG, "onInfo");
                 mp.setLooping(true);
                 imgThumb.animate().alpha(0).setDuration(200).start();
                 return false;
@@ -100,7 +100,7 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                Log.e(TAG,"onPrepared");
+                Log.e(TAG, "onPrepared");
 
             }
         });
@@ -108,15 +108,16 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
 
         imgPlay.setOnClickListener(new View.OnClickListener() {
             boolean isPlaying = true;
+
             @Override
             public void onClick(View v) {
-                if (videoView.isPlaying()){
-                    Log.e(TAG,"isPlaying:"+videoView.isPlaying());
+                if (videoView.isPlaying()) {
+                    Log.e(TAG, "isPlaying:" + videoView.isPlaying());
                     imgPlay.animate().alpha(1f).start();
                     videoView.pause();
                     isPlaying = false;
-                }else {
-                    Log.e(TAG,"isPlaying:"+videoView.isPlaying());
+                } else {
+                    Log.e(TAG, "isPlaying:" + videoView.isPlaying());
                     imgPlay.animate().alpha(0f).start();
                     videoView.start();
                     isPlaying = true;
@@ -125,7 +126,7 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
         });
     }
 
-    private void releaseVideo(int index){
+    private void releaseVideo(int index) {
         View itemView = mRecyclerView.getChildAt(index);
         final VideoView videoView = itemView.findViewById(R.id.video_view);
         final ImageView imgThumb = itemView.findViewById(R.id.img_thumb);
@@ -136,23 +137,24 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
     }
 
 
-    class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
-        private int[] imgs = {R.mipmap.img_video_1,R.mipmap.img_video_2};
-        private int[] videos = {R.raw.video_1,R.raw.video_2};
-        public MyAdapter(){
+    class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+        private int[] imgs = {R.mipmap.img_video_1, R.mipmap.img_video_2};
+        private int[] videos = {R.raw.video_1, R.raw.video_2};
+
+        public MyAdapter() {
         }
 
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_pager,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_pager, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.img_thumb.setImageResource(imgs[position%2]);
-            holder.videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+ videos[position%2]));
+            holder.img_thumb.setImageResource(imgs[position % 2]);
+            holder.videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + videos[position % 2]));
         }
 
         @Override
@@ -160,11 +162,12 @@ public class ViewPagerLayoutManagerActivity extends AppCompatActivity {
             return 20;
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder{
+        public class ViewHolder extends RecyclerView.ViewHolder {
             ImageView img_thumb;
             VideoView videoView;
             ImageView img_play;
             RelativeLayout rootView;
+
             public ViewHolder(View itemView) {
                 super(itemView);
                 img_thumb = itemView.findViewById(R.id.img_thumb);
